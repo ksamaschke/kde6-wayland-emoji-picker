@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Setup script for emoji-picker dependencies
-# Run this once: ./setup.sh (will ask for sudo when needed)
+# Setup script for KDE Wayland Emoji Picker
+# Installs dependencies and configures permissions
+# Run once: ./setup.sh
 
 set -e
 
-echo "Setting up emoji-picker dependencies..."
+echo "Setting up KDE Wayland Emoji Picker..."
 
 # Install required packages
 echo "Installing required packages..."
@@ -39,7 +40,10 @@ sudo udevadm control --reload-rules
 sudo udevadm trigger
 
 echo ""
-echo "Setup complete! Please note:"
-echo "1. You need to log out and log back in for group changes to take effect"
-echo "2. After logging back in, you can run: ./emoji-picker.sh"
-echo "3. The emoji-picker.sh script can now run without sudo"
+echo "Setup complete!"
+echo ""
+echo "IMPORTANT: You must log out and log back in for group changes to take effect."
+echo ""
+echo "After logging back in:"
+echo "1. Run: ./emoji-picker.sh"
+echo "2. Set up a keyboard shortcut (see README.md)"

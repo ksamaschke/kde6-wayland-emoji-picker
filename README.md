@@ -1,20 +1,20 @@
-# KDE Plasma Emoji Picker
+# KDE Wayland Emoji Picker
 
-A simple utility that launches KDE's emoji picker and automatically types the selected emoji at your cursor position.
+Enhances KDE's emoji picker by automatically closing it after selection and pasting the emoji at your cursor.
 
 ## Features
 
-- Launches the native KDE Plasma emoji picker (plasma-emojier)
-- Monitors clipboard for emoji selection
-- Automatically types the selected emoji using ydotool
-- Works with Wayland
-- No need for manual copy-paste
+- Launches KDE Plasma's native emoji picker
+- Automatically closes the picker after emoji selection
+- Returns focus to your original application
+- Sends Ctrl+V to paste the selected emoji
+- Works reliably with keyboard shortcuts on Wayland
 
 ## Requirements
 
 - KDE Plasma desktop environment
-- Wayland session
-- Linux system with udev support
+- Wayland or X11 session
+- Linux system with apt package manager
 
 ## Installation
 
@@ -33,40 +33,48 @@ A simple utility that launches KDE's emoji picker and automatically types the se
 
 ## Usage
 
-After setup, simply run:
+Run the script directly:
 ```bash
 ./emoji-picker.sh
 ```
 
-The KDE emoji picker will appear. Select an emoji and it will be automatically typed at your cursor position.
+Or better yet, set up a keyboard shortcut (see below).
 
-### Setting Up a Keyboard Shortcut (Recommended)
+### Setting Up a Keyboard Shortcut
 
-For quick access, it's recommended to set up a custom keyboard shortcut:
+Set up a custom keyboard shortcut:
 
 1. Open **System Settings** > **Shortcuts** > **Custom Shortcuts**
-   - Alternative path: **System Settings** > **Input Actions**
-
-2. Right-click in the left pane and select **New** > **Global Shortcut** > **Command/URL**
-
+2. Right-click and select **Add New** > **Command or Script**
 3. Configure the shortcut:
    - **Name**: Emoji Picker
-   - **Command**: `/path/to/kde6-wayland-emoji-picker/emoji-picker.sh`
-     (Replace with the actual path to your script)
-   - **Trigger**: Click the button and press your desired key combination
-     (e.g., `Meta+E` or `Ctrl+Alt+E`)
-
-4. Click **Apply** to save the shortcut
-
-Now you can launch the emoji picker instantly using your keyboard shortcut!
+   - **Command**: `/path/to/emoji-picker.sh`
+   - **Trigger**: Your desired key combination (e.g., `Meta+E`)
+4. Click **Apply**
 
 ## How it Works
 
-1. The script stores the current clipboard content
-2. Launches KDE's plasma-emojier
-3. Monitors the clipboard for changes every 0.1 seconds
-4. When an emoji is selected (clipboard changes), it types the emoji using ydotool
-5. Cleans up and exits
+1. Stores the current clipboard content
+2. Launches KDE's emoji picker (plasma-emojier)
+3. Monitors clipboard for changes
+4. When an emoji is selected:
+   - Closes the picker automatically
+   - Waits briefly for focus to return
+   - Sends Ctrl+V to paste the emoji
+
+## Limitations
+
+- **Focus changes**: If you switch windows after invoking the script, the paste will occur in the newly focused window
+- **Clipboard interference**: If another application modifies the clipboard while the emoji picker is open, the script may detect the wrong change
+- **Auto-paste restrictions**: On KDE Plasma 6 with Wayland, the auto-paste (Ctrl+V) may not work in some applications due to security policies. In such cases, paste manually with Ctrl+V
+- **Timing sensitivity**: The script relies on clipboard monitoring, which can occasionally miss rapid changes
+
+## Why This Script?
+
+KDE's emoji picker (`plasma-emojier`) doesn't close automatically after selection, requiring extra clicks. This script streamlines the workflow by:
+- Auto-closing the picker
+- Attempting to paste automatically
+- Providing a smoother emoji selection experience
 
 ## License
 
