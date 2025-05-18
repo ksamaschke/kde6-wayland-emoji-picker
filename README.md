@@ -20,8 +20,8 @@ A simple utility that launches KDE's emoji picker and automatically types the se
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/ksamaschke/emoji-picker.git
-   cd emoji-picker
+   git clone https://github.com/ksamaschke/kde6-wayland-emoji-picker.git
+   cd kde6-wayland-emoji-picker
    ```
 
 2. Run the setup script (requires sudo):
