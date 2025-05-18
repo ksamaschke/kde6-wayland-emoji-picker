@@ -40,6 +40,26 @@ After setup, simply run:
 
 The KDE emoji picker will appear. Select an emoji and it will be automatically typed at your cursor position.
 
+### Setting Up a Keyboard Shortcut (Recommended)
+
+For quick access, it's recommended to set up a custom keyboard shortcut:
+
+1. Open **System Settings** > **Shortcuts** > **Custom Shortcuts**
+   - Alternative path: **System Settings** > **Input Actions**
+
+2. Right-click in the left pane and select **New** > **Global Shortcut** > **Command/URL**
+
+3. Configure the shortcut:
+   - **Name**: Emoji Picker
+   - **Command**: `/path/to/kde6-wayland-emoji-picker/emoji-picker.sh`
+     (Replace with the actual path to your script)
+   - **Trigger**: Click the button and press your desired key combination
+     (e.g., `Meta+E` or `Ctrl+Alt+E`)
+
+4. Click **Apply** to save the shortcut
+
+Now you can launch the emoji picker instantly using your keyboard shortcut!
+
 ## How it Works
 
 1. The script stores the current clipboard content
