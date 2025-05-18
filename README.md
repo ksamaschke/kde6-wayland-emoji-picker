@@ -1,4 +1,4 @@
-# KDE Wayland Emoji Picker
+# KDE 6 Emoji Picker
 
 I use Emojis very often, but unfortunately, there's no good Emoji-Picker for KDE 6 - at least not that I would be aware of. 
 
